@@ -514,9 +514,10 @@ static int nl_get_multicast_id(struct nl80211_global *global,
 
 	ret = send_and_recv_msgs_global(global, msg, family_handler, &res);
 	msg = NULL;
-	if (ret == 0)
+	if (ret == 0) {
 		ret = res.id;
-
+		printf("ret = %d\n",ret);
+	}
 nla_put_failure:
 	nlmsg_free(msg);
 	return ret;
